@@ -604,10 +604,6 @@ class Connection(ConnectionBase):
                     self._winrm_get_raw_command_output(protocol, shell_id, command_id)
                 stdout_buffer.append(stdout)
                 stderr_buffer.append(stderr)
-
-                # If we were able to get output at least once then we should be
-                # able to get the rest.
-                try_once = False
             except WinRMOperationTimeoutError:
                 # This is an expected error when waiting for a long-running process,
                 # just silently retry if we haven't been set to do one attempt.
